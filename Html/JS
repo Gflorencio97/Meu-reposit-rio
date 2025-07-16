@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registro de Informações</title>
+  </head>
+  <body>
+    <h1>Buscar Usuário</h1>
+
+    <input type="text" id="buscar" placeholder="Digite o nome" />
+    <button onclick="procurarUsuario()">Buscar</button>
+    <link rel="stylesheet" href="style.css" />
+
+    <div id="resultado"></div>
+
+    <script>
+      const usuarios = [
+        {
+          nome: "Gabriel Florencio",
+          cargo: "Assistente de TI",
+          itens: [
+            "Celular: Motorola Moto G73 | Telefone: (19) 99594-9888",
+            "EVONBTAMR21 | Modelo DELL G3",
+            "Sistema Windows 11 Pro",
+            "Placa Mãe DELL HM370",
+            "Placa de Vídeo GeForce RTX 2050",
+            "Processador 13th Gen Intel(R) Core(TM) i5-13450HX 2.40 GHz | 16 Gb de Memória RAM",
+          ],
+          senhas: ["Bup80033"],
+        },
+        {
+          nome: "Gabriel Conti",
+          cargo: "Supervisor de Engenharia",
+          itens: [
+            "Número da empresa: (19) 99275-2852",
+            "EVONBTAMR12 | Modelo DELL G3",
+            "Sistema Windows 11 Pro",
+            "Placa Mãe Dell Inc. 0FH78V",
+            "Processador Intel(R) Core(TM) i5-10300H @ 2.50GHz | 8 Gb de Memória RAM",
+          ],
+          senhas: ["2710"]
+        },
+        {
+          nome:"Milton Bosqueiro",
+          cargo:"Diretor",
+          itens: [
+            "Número da empresa: (19) 97417-7269",
+            "EVONBTAMR05 | Modelo DELL Latitude 3420",
+            "Sistema Windows 11 Pro",
+            "Placa Mãe Dell Inc. 04G4X5",
+            "Processador Intel(R) Core(TM) i5-1135G7 @ 2.40GHz | 16 Gb de Memória RAM",
+          ],
+          senhas: ["Goy89564"]
+        },
+        {
+          nome: "Agaildo",
+          cargo: "Produção",
+          itens: [
+            "EVONBTAMR 01 | Modelo DELL Inspiron 15-3567",
+            "Sistema Windows 10 Pro",
+            "Placa mãe Dell Inc. 0C3FVV",
+            "Processador Intel(R) Core(TM) i5-7200U @ 2.50GHz | 8 Gb de Memória Ram",
+          ],
+          senhas: ["Koh54223"]
+        },
+        {
+          nome:"Rubens",
+          cargo:"Montagem",
+          itens: ["EVONBTAMR02 | Modelo DELL Latitude 3490",
+          "Sistema Windows 10 Pro",
+          "Placa mãe Dell Inc. 03JPR8",
+          "Processador Intel(R) Core(TM) i5-8250U @ 1.60GHz | 8 Gb de Memória Ram"
+          ],
+          senhas: ["Yok92501"]
+        }
+      ];
+
+      function procurarUsuario() {
+        const nome = document.getElementById("buscar").value.toLowerCase();
+        const usuario = usuarios.find((u) =>
+          u.nome.toLowerCase().includes(nome)
+        );
+        const div = document.getElementById("resultado");
+
+        if (usuario) {
+          div.innerHTML = `
+          <p><strong>Nome:</strong> ${usuario.nome}</p>
+          <p><strong>Cargo:</strong> ${usuario.cargo}</p>
+          <p><strong>Itens:</strong></p>
+          <ul>
+            ${usuario.itens.map((item) => `<li>${item}</li>`).join("")}
+          </ul>
+          <p><strong>Senhas:</strong> ${usuario.senhas.join(", ")}</p>
+        `;
+        } else {
+          div.innerHTML = "<p><em>Usuário não encontrado.</em></p>";
+        }
+      }
+    </script>
+  </body>
+</html>
